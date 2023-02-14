@@ -44,4 +44,20 @@ class Users
             ]);
             return $result;
         }
+
+    public function login($login, $password)
+    {
+        $query = $this->db->prepare("SELECT * FROM utilisateurs WHERE login = :login");
+        $query->execute(['login' => $login]);
+        $result = $query->fetch();
+        if ($result) {
+            if (password_verify($password, $result['password'])) {
+                return $result;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
