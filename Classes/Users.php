@@ -1,5 +1,9 @@
 <?php
-include '../PHP/config.php';
+define("DB_HOST", 'localhost');
+define("DB_NAME", 'livreor');
+define('DB_CHARSET', 'utf8');
+define("DB_USER", 'root');
+define("DB_PASSWORD", '');
 class Users
 {
     protected $db;
@@ -19,7 +23,18 @@ class Users
             exit;
         }
     }
-    public function register($login, $password,)
+    public function checkLogin($login)
+    {
+        $query = $this->db->prepare("SELECT COUNT(*) as total FROM utilisateurs WHERE login = :login");
+        $query->execute(['login' => $login]);
+        $result = $query->fetch();
+        if ($result['total'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function register($login, $password)
         {
             $query = $this->db->prepare("INSERT INTO utilisateurs (login, password) VALUES (:login, :password)");
             $result = $query->execute

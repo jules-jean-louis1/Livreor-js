@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*.tab-body {
+    display: none;
+}
+.tab-body.active {
+    display: block;
+}*/
+
+/*#####################################
+#######################################
+
+            REGISTER PAGE
+
+#######################################
+#####################################*/
+
+/* class for small text */
+.is-invalid {
+    color: red;
+    font-size: 12px;
+    max-width: 232px;
+}
+.is-valid {
+    color: green;
+    font-size: 12px;
+}
+
+.alert-success {
+    color: green;
+    background: #0080001c;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 5px;
+}
+.alert-danger {
+    color: red;
+    background: #ff00001c;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 5px;
+}
