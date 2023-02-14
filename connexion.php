@@ -17,7 +17,7 @@ if (isset($_POST['loginC'])) {
         echo json_encode(['status' => '403', 'message' => 'Login ou mot de passe incorrect']);
     }
 }
-
+var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -39,11 +39,14 @@ if (isset($_POST['loginC'])) {
         </div>
         <!--    FormConnexion-->
         <div class="tab-body" data-id="connexion">
+            <div class="registerMsg">
+                <span id="msgCount"></span>
+            </div>
             <form action="connexion.php" method="post" id="LoginForm">
                 <div class="flex">
                     <div class="flex flex-col">
                         <label for="loginC">Email :</label>
-                        <input type="email" name="loginC" id="loginC" class="input rounded bg-slate-300 p-2"
+                        <input type="text" name="loginC" id="loginC" class="input rounded bg-slate-300 p-2"
                                placeholder="Nom d'utilisateur">
                     </div>
                 </div>
@@ -63,6 +66,9 @@ if (isset($_POST['loginC'])) {
                 </div>
             </form>
         </div>
+    </div>
+    <div>
+        <a href="disconnect.php">Deconnexion</a>
     </div>
 </main>
 </body>
