@@ -2,7 +2,7 @@
 include 'Classes/Users.php';
 session_start();
 
-if (isset($_POST['loginC'])) {
+/*if (isset($_POST['loginC'])) {
     $login = $_POST['loginC'];
     $password = $_POST['passwordC'];
     $users = new Users();
@@ -15,6 +15,23 @@ if (isset($_POST['loginC'])) {
     } else {
         header('http/1.1 403 Forbidden');
         echo json_encode(['status' => '403', 'message' => 'Login ou mot de passe incorrect']);
+    }
+}*/
+if (isset($_POST['loginC'])) {
+    $login = $_POST['loginC'];
+    $password = $_POST['passwordC'];
+    $users = new Users();
+    $connexion = $users->login($login, $password);
+    if ($connexion) {
+        $_SESSION['login'] = $login;
+        $_SESSION['password'] = $password;
+        $response1 = array('success' => true);
+        echo json_encode($response1);
+        header('Content-type: application/json; charset=utf-8');
+    } else {
+        $response2 = array('success' => false);
+        echo json_encode($response2);
+        header('Content-type: application/json; charset=utf-8');
     }
 }
 var_dump($_SESSION);
