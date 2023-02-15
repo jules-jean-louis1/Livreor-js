@@ -60,4 +60,28 @@ class Users
             return false;
         }
     }
+    public function updateLogin($login, $id)
+    {
+        $query = $this->db->prepare("UPDATE utilisateurs SET login = :login WHERE id = :id");
+        $result = $query->execute(['login' => $login, 'id' => $id]);
+        return $result;
+    }
+    public function updatePassword($password, $id)
+    {
+        $query = $this->db->prepare("UPDATE utilisateurs SET password = :password WHERE id = :id");
+        $result = $query->execute(['password' => password_hash($password, PASSWORD_BCRYPT), 'id' => $id]);
+        return $result;
+    }
+    public function updateLoginPassword($login, $password, $id)
+    {
+        $query = $this->db->prepare("UPDATE utilisateurs SET login = :login, password = :password WHERE id = :id");
+        $result = $query->execute(['login' => $login, 'password' => password_hash($password, PASSWORD_BCRYPT), 'id' => $id]);
+        return $result;
+    }
+    public function deleteUser($id)
+    {
+        $query = $this->db->prepare("DELETE FROM utilisateurs WHERE id = :id");
+        $result = $query->execute(['id' => $id]);
+        return $result;
+    }
 }

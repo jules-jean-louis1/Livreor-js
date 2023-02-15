@@ -8,6 +8,7 @@ if (isset($_POST['loginC'])) {
     $users = new Users();
     $connexion = $users->login($login, $password);
     if ($connexion) {
+        $_SESSION['id'] = $connexion['id'];
         $_SESSION['login'] = $login;
         $_SESSION['password'] = $password;
         header('http/1.1 201 ok');
@@ -38,17 +39,17 @@ if (isset($_POST['loginC'])) {
             <div class="registerMsg">
                 <span id="msgCount"></span>
             </div>
-            <form action="connexion.php" method="post" id="LoginForm">
+            <form action="connexion.php" method="post" id="LoginForm" class="flex flex-col space-y-3">
                 <div class="flex">
                     <div class="flex flex-col">
-                        <label for="loginC">Email :</label>
+                        <label for="loginC">Login :</label>
                         <input type="text" name="loginC" id="loginC" class="input rounded bg-slate-300 p-2"
                                placeholder="Nom d'utilisateur">
                     </div>
                 </div>
                 <div class="flex">
                     <div class="flex flex-col">
-                        <label for="passwordC">Mot de passe</label>
+                        <label for="passwordC">Mot de passe :</label>
                         <input name="passwordC" id="passwordC" placeholder="Mot de Passe" type="password"
                                class="input rounded bg-slate-300 p-2">
                     </div>

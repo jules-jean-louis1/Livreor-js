@@ -43,7 +43,7 @@ if (isset($_POST['loginR'])) {
     <main>
         <div class="flex flex-col items-center">
             <div class="logo">
-                <i class="fas fa-user"></i>
+                <i class="fas fa-user fa-2x"></i>
             </div>
             <!--    FormInscription-->
             <div class="flex">
@@ -61,14 +61,14 @@ if (isset($_POST['loginR'])) {
                         </div>
                         <div class="flex py-2">
                             <div class="flex flex-col">
-                                <label for="passwordR">Mot de passe</label>
+                                <label for="passwordR">Mot de passe :</label>
                                 <input type="password" class="input rounded bg-slate-300 p-2" placeholder="Mot de Passe" id="passwordR" name="passwordR">
                                 <small id="passwordError" class="invalid-feedback"></small>
                             </div>
                         </div>
                         <div class="flex py-2">
                             <div class="flex flex-col">
-                                <label for="c_passwordR">Confirmer Mot de passe</label>
+                                <label for="c_passwordR">Confirmer le mot de passe :</label>
                                 <input type="password" name="c_passwordR" class="input rounded bg-slate-300 p-2" placeholder="Confirmer Mot de Passe" id="c_passwordR">
                                 <small id="error"></small>
                             </div>
