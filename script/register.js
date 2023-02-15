@@ -6,10 +6,10 @@ const error = document.querySelector('#error');
 const password = document.querySelector('#passwordR');
 const c_password = document.querySelector('#c_passwordR');
 function errorBorder(input) {
-    input.className = "bg-slate-200 border-2 border-red-500 px-2 py-2 mx-2 rounded";
+    input.className = "bg-slate-200 border-2 border-red-500 px-2 py-2 rounded";
 }
 function successBorder(input) {
-    input.className = "bg-slate-200 border-2 border-green-500 px-2 py-2 mx-2 rounded";
+    input.className = "bg-slate-200 border-2 border-green-500 px-2 py-2 rounded";
 }
 function matchPassword() {
     let password = document.querySelector("#passwordR").value;
@@ -17,34 +17,54 @@ function matchPassword() {
     if (password !== c_password) {
         errorBorder(document.querySelector("#passwordR"));
         errorBorder(document.querySelector("#c_passwordR"));
-        error.innerHTML = "Les mots de passe ne correspondent pas";
-        error.classList.add("alert-danger");
-        error.classList.remove("alert-success");
+        return false;
     } else {
         successBorder(document.querySelector("#passwordR"));
         successBorder(document.querySelector("#c_passwordR"));
         error.innerHTML = "";
         error.classList.remove("alert-danger");
+        return true;
     }
 }
+const validPassword = (passwordR) => {
+    let small = document.querySelector('#passwordError');
+    let reg = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{5,}$/;
+    if (reg.test(passwordR.value) === false) {
+        small.innerHTML = "Le mot de passe doit contenir au moins 5 caractères et un chiffre";
+        small.classList.add("is-invalid");
+        small.classList.remove("is-valid");
+        return false;
+    } else {
+        small.innerHTML = "";
+        small.classList.remove("is-invalid");
+        small.classList.add("is-valid");
+        return true;
+    }
+}
+
+registerForm.passwordR.addEventListener("change", function () {
+    validPassword(this);
+});
 registerForm.addEventListener("keyup", function () {
     matchPassword();
 });
 
 registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    let DataFormRegister = new FormData(registerForm);
-    let password = DataFormRegister.get("password");
-    let c_password = DataFormRegister.get("c_password");
-    console.log(password, c_password);
-    if (password !== c_password) {
-       errorBorder(document.querySelector("#password"));
-       errorBorder(document.querySelector("#c_password"));
+
+    // Validation du mot de passe
+    if (!validPassword(password)) {
+        return;
+    }
+    // Vérification de la correspondance des mots de passe
+    if (!matchPassword()) {
         error.innerHTML = "Les mots de passe ne correspondent pas";
         error.classList.add("alert-danger");
         error.classList.remove("alert-success");
+        return;
+    }
+    let DataFormRegister = new FormData(registerForm);
 
-    } else {
         fetch('inscription.php', {
             method: 'POST',
             body: DataFormRegister
@@ -72,7 +92,7 @@ registerForm.addEventListener('submit', (e) => {
         .catch((error) => {
             console.error(error);
         });
-    }
+
 });
 
 

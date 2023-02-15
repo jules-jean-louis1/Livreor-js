@@ -63,7 +63,7 @@ if (isset($_POST['loginR'])) {
                             <div class="flex flex-col">
                                 <label for="passwordR">Mot de passe</label>
                                 <input type="password" class="input rounded bg-slate-300 p-2" placeholder="Mot de Passe" id="passwordR" name="passwordR">
-                                <small></small>
+                                <small id="passwordError" class="invalid-feedback"></small>
                             </div>
                         </div>
                         <div class="flex py-2">
