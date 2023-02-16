@@ -36,7 +36,11 @@ if (isset($_POST['commentaire'])) {
     <main class="flex flex-col items-center pt-4">
         <div>
             <h1>
-                <span class="text-2xl">Bonjour <?= $_SESSION['login']?></span>
+                <?php if(isset($_SESSION)) { ?>
+                    <span class="text-2xl">Bonjour <?= $_SESSION['login']?></span>
+                <?php } else { ?>
+                    <span class="text-lg">Livre d'or</span>
+                <?php } ?>
             </h1>
         </div>
         <div class="flex justify-center w-[80%]">
@@ -52,6 +56,11 @@ if (isset($_POST['commentaire'])) {
                             Ajouter un commentaire
                         </button>
                     </form>
+                </div>
+                <div>
+                    <p>
+                        <span id="msgCom"></span>
+                    </p>
                 </div>
             <?php } else { ?>
                 <button type="submit">Connectez-vous pour commenter</button>
