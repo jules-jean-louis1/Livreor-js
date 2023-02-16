@@ -2,7 +2,7 @@
 
 //fetch_comment.php
 
-$connect = new PDO('mysql:host=localhost;dbname=livreor', 'root', '');
+$connect = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
 
 $query = "SELECT * FROM tbl_comment WHERE parent_comment_id = '0' ORDER BY comment_id DESC";
 
