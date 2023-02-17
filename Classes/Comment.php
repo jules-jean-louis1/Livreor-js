@@ -29,8 +29,9 @@ class Comment
 
         $query = $this->db->prepare("SELECT `date`,`login`,`commentaire` FROM `utilisateurs` INNER JOIN `commentaires` WHERE utilisateurs.id = commentaires.id_utilisateur ORDER BY `date` DESC;");
         $query->execute();
+        header("Content-Type: JSON");
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+        return json_encode($result, JSON_PRETTY_PRINT);
 
     }
     public function insertComment($comment, $id)

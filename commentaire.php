@@ -66,20 +66,7 @@ if (isset($_POST['commentaire'])) {
                 <button type="submit">Connectez-vous pour commenter</button>
             <?php } ?>
         </div>
-        <div class="flex flex-col items-center">
-            <?php foreach ($comments as $comment) { ?>
-                <div class="flex flex-col items-center w-[80%] rounded bg-slate-200 py-2 my-2">
-                    <div class="flex flex-col items-center">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-xl"><?= $comment['login'] ?></span>
-                            <span class="text-sm"><?= $comment['date'] ?></span>
-                        </div>
-                        <div class="flex flex-col">
-                            <span><?= $comment['commentaire'] ?></span>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
+        <div class="flex flex-col items-center" id="displayComment">
         </div>
     </main>
 </body>
