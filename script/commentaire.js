@@ -3,14 +3,16 @@ const commentMessage = document.querySelector('#commentaire');
 const displaymsg = document.querySelector('#msgCom');
 
 /*Creation d'une fonction qui verifie si le champ commentaire est vide*/
-function EmptyComment() {
-    if (commentMessage.value === "") {
+function EmptyComment(commentMessage) {
+    if (commentMessage.value.lenght === 0) {
         let displaymsg = document.querySelector('#msgCom');
         displaymsg.innerHTML = "Votre message est vide.";
         displaymsg.classList.add("alert-danger");
         console.log("Votre message est vide.");
         return false;
-    }
+    } else {
+        return true
+        }
 }
 EmptyComment();
 /*Creation d'une fonction qui affiches les commentaires
