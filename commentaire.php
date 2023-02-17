@@ -32,43 +32,51 @@ if (isset($_POST['commentaire'])) {
 <!-- H E A D E R -->
 <?php require_once 'import/header.php'?>
 <!-- H E A D E R -->
-    <main class="flex flex-col items-center pt-4">
-        <div>
-            <h1>
-                <?php if(isset($_SESSION)) { ?>
-                    <span class="text-2xl">Bonjour <?= $_SESSION['login']?></span>
-                <?php } else { ?>
-                    <span class="text-lg">Livre d'or</span>
-                <?php } ?>
-            </h1>
-        </div>
-        <div class="flex flex-col justify-center w-[80%]">
-            <?php if (isset($_SESSION['login'])) { ?>
-                <div class="flex flex-col">
-                    <form action="" method="post" id="commentForm">
+    <main class="lg:pt-[3%]">
+        <article class="flex flex-col items-center">
+            <div id="DisplayTitleComment" class="flex flex-col items-center pb-4">
+                <?php if (isset($_SESSION)) { ?>
+                    <h1 class="text-white text-semibold text-lg">
+                        <span class="text-2xl">Bonjour <?= $_SESSION['login'] ?></span>
+                    </h1>
+                    <p class="font-light text-slate-400">Ici vous pouvez laissez un commentaire ou lire celui des autres utilisateurs</p>
+                    <?php } else { ?>
+                    <h1 class="text-white text-semibold text-lg">
+                        <span class="text-lg">Livre d'or</span>
+                    </h1>
+                    <p class="font-light text-slate-400">Connecter vous pouvez laissez un commentaire ou lire celui des autres utilisateurs</p>
+                    <?php } ?>
+            </div>
+            <div id="containerBgComment" class="flex flex-col items-center pt-4 lg:w-[95%]">
+                <div class="flex flex-col justify-center w-[80%] lg:pt-5">
+                    <?php if (isset($_SESSION['login'])) { ?>
                         <div class="flex flex-col">
-                            <label for="commentaire">Commentaire :</label>
-                            <textarea name="commentaire" id="commentaire" cols="30" rows="10"
-                                      class="bg-slate-100 rounded">
-
-                            </textarea>
+                            <form action="" method="post" id="commentForm">
+                                <div class="flex flex-col">
+                                    <label for="commentaire" class="text-white">Ecrivez votre commentaire :</label>
+                                    <textarea name="commentaire" id="commentaire" cols="20" rows="10"
+                                              class="rounded-[1rem] p-2 text-white" placeholder="Dites bonjour :)">
+                                    </textarea>
+                                </div>
+                                <button type="submit" id="submit"
+                                        class="py-2 px-5 rounded-full text-white bg-black hover:bg-slate-800 my-2 ease-out duration-100">
+                                    Ajouter un commentaire
+                                </button>
+                            </form>
                         </div>
-                        <button type="submit" id="submit" class="bg-blue-500 py-2 px-5 rounded text-slate-100 hover:bg-blue-800 my-2 ease-out duration-100">
-                            Ajouter un commentaire
-                        </button>
-                    </form>
+                        <div>
+                            <p class="py-2">
+                                <span id="msgCom"></span>
+                            </p>
+                        </div>
+                    <?php } else { ?>
+                        <button type="submit">Connectez-vous pour commenter</button>
+                    <?php } ?>
                 </div>
-                <div>
-                    <p class="py-2">
-                        <span id="msgCom"></span>
-                    </p>
+                <div class="flex flex-col items-center" id="displayComment">
                 </div>
-            <?php } else { ?>
-                <button type="submit">Connectez-vous pour commenter</button>
-            <?php } ?>
-        </div>
-        <div class="flex flex-col items-center" id="displayComment">
-        </div>
+            </div>
+        </article>
     </main>
 </body>
 </html>
