@@ -36,7 +36,7 @@ class Comment
     }
     public function insertComment($comment, $id)
     {
-        $query = $this->db->prepare("INSERT INTO commentaires (commentaire, id_utilisateur) VALUES (:commentaire, :id_utilisateur)");
+        $query = $this->db->prepare("INSERT INTO `commentaires` (`commentaire`, `id_utilisateur`, `date`) VALUES (:commentaire, :id_utilisateur, NOW())");
         $result = $query->execute
         ([
             'commentaire' => $comment,

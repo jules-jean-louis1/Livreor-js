@@ -1,5 +1,6 @@
 const commentForm = document.querySelector('#commentForm');
 const commentMessage = document.querySelector('#commentaire');
+const displaymsg = document.querySelector('#msgCom');
 
 /*Creation d'une fonction qui verifie si le champ commentaire est vide*/
 function EmptyComment() {
@@ -20,14 +21,19 @@ function displayComment() {
             displayComment.innerHTML = "";
             data.forEach((comment) => {
                 displayComment.innerHTML += `
-                <div class="flex flex-col items-center w-[80%] rounded bg-slate-100 py-2 my-2">
-                    <div class="flex flex-col items-center justify-start ">
+                <div class="flex flex-col items-start w-[80%] rounded bg-slate-100 py-2 px-3 my-2">
+                    <div class="flex flex-col items-start justify-start ">
                         <div class="flex items-center space-x-2">
-                            <span class="text-lg">Par ${comment.login}</span>
-                            <span class="text-sm">le ${comment.date}</span>
+                            <h6 class="py-2">
+                                <span>Par</span>
+                                <span class="text-lg">${comment.login}</span>
+                                <span class="text-sm">le ${comment.date}</span>
+                            </h6>
                         </div>
-                        <div class="flex flex-col">
-                            <span>${comment.commentaire}</span>
+                        <div class="flex flex-col rounded bg-white p-2">
+                            <p>
+                                <span>${comment.commentaire}</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -42,8 +48,19 @@ displayComment();
 pour soummettre le formulaire*/
 commentForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    displayComment();
+    setTimeout(displayComment, 200);
 });
+/*Function display success and failure*/
+function displaySuccess() {
+    displaymsg.innerHTML = "Votre message a été posté."
+    displaymsg.classList.add("alert-success");
+    displaymsg.classList.remove("alert-danger");
+    // Ajoute une classe "fade-out" au message après 5 secondes
+    setTimeout(() => {
+        displaymsg.classList.remove("alert-success");
+        displaymsg.classList.add("fade-out");
+    }, 5000);
+}
 commentForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let DataFormComment = new FormData(commentForm);
@@ -56,10 +73,8 @@ commentForm.addEventListener('submit', (e) => {
             return;
         }
         if (response.status === 201) {
-            let displaymsg = document.querySelector('#msgCom');
-            displaymsg.innerHTML = "Votre message a été posté."
-            displaymsg.classList.add("alert-success");
-            displaymsg.classList.remove("alert-danger");
+            displaySuccess();
+            commentMessage.value = "";
         } else {
             displaymsg.innerHTML = "Votre message n'a pas pu être poster.";
             displaymsg.classList.add("alert-danger");

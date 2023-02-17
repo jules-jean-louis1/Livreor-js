@@ -1,9 +1,6 @@
 <?php
-include 'Classes/Comment.php';
+require_once 'Classes/Comment.php';
 session_start();
-
-$comment = new Comment();
-$comments = $comment->getComments();
 
 if (isset($_POST['commentaire'])) {
     $commentaire = $_POST['commentaire'];
@@ -43,7 +40,7 @@ if (isset($_POST['commentaire'])) {
                 <?php } ?>
             </h1>
         </div>
-        <div class="flex justify-center w-[80%]">
+        <div class="flex flex-col justify-center w-[80%]">
             <?php if (isset($_SESSION['login'])) { ?>
                 <div class="flex flex-col">
                     <form action="" method="post" id="commentForm">
@@ -52,13 +49,13 @@ if (isset($_POST['commentaire'])) {
                             <textarea name="commentaire" id="commentaire" cols="30" rows="10"
                                       class="bg-slate-100"></textarea>
                         </div>
-                        <button type="submit" id="submit" class="bg-blue-500 p-2 text-slate-100 hover:bg-blue-800">
+                        <button type="submit" id="submit" class="bg-blue-500 py-2 px-5 rounded text-slate-100 hover:bg-blue-800 my-2 ease-out duration-100">
                             Ajouter un commentaire
                         </button>
                     </form>
                 </div>
                 <div>
-                    <p>
+                    <p class="py-2">
                         <span id="msgCom"></span>
                     </p>
                 </div>
