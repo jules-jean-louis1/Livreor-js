@@ -23,13 +23,15 @@ if (isset($_POST['commentaire'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/login.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://kit.fontawesome.com/8b26d30613.js" crossorigin="anonymous"></script>
     <script src="script/commentaire.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Commentaire</title>
 </head>
 <body>
-
+<!-- H E A D E R -->
+<?php require_once 'import/header.php'?>
+<!-- H E A D E R -->
     <main class="flex flex-col items-center pt-4">
         <div>
             <h1>
@@ -47,7 +49,9 @@ if (isset($_POST['commentaire'])) {
                         <div class="flex flex-col">
                             <label for="commentaire">Commentaire :</label>
                             <textarea name="commentaire" id="commentaire" cols="30" rows="10"
-                                      class="bg-slate-100"></textarea>
+                                      class="bg-slate-100 rounded">
+
+                            </textarea>
                         </div>
                         <button type="submit" id="submit" class="bg-blue-500 py-2 px-5 rounded text-slate-100 hover:bg-blue-800 my-2 ease-out duration-100">
                             Ajouter un commentaire

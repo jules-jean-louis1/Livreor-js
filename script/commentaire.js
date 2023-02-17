@@ -26,6 +26,7 @@ function displayComment() {
                         <div class="flex items-center space-x-2">
                             <h6 class="py-2">
                                 <span>Par</span>
+                                <i class="fa-solid fa-circle-user"></i>
                                 <span class="text-lg">${comment.login}</span>
                                 <span class="text-sm">le ${comment.date}</span>
                             </h6>
@@ -48,7 +49,7 @@ displayComment();
 pour soummettre le formulaire*/
 commentForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    setTimeout(displayComment, 200);
+    setTimeout(displayComment, 50);
 });
 /*Function display success and failure*/
 function displaySuccess() {
