@@ -85,6 +85,9 @@ header {
     background: radial-gradient(140% 107.13% at 50% 90%,transparent 37.41%,#63e 69.27%,#fff 100%);
     border-radius: 2.4rem;
 }
+#displayCommentList {
+    background: linear-gradient(135deg, #010314,transparent);
+}
 textarea {
     border: 1px solid hsla(0, 0%, 0%, 0.15);
     background: hsla(0,0%,100%,.15);

@@ -2,8 +2,8 @@
 
 ?>
 
-<header class=" bg-[#000]">
-    <div id="containerHeader" class="flex justify-between items-center py-3 mx-5 text-xl">
+<header class=" bg-[#000] ">
+    <div id="containerHeader" class="flex justify-between items-center py-3 mx-5 text-xl border-b-2 border-[#6633EEFF]">
         <div id="logo">
             <ul class="flex lg:space-x-2">
                 <li>

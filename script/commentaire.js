@@ -8,9 +8,11 @@ function EmptyComment() {
         let displaymsg = document.querySelector('#msgCom');
         displaymsg.innerHTML = "Votre message est vide.";
         displaymsg.classList.add("alert-danger");
+        console.log("Votre message est vide.");
         return false;
     }
 }
+EmptyComment();
 /*Creation d'une fonction qui affiches les commentaires
 depuis la base de données via la page fetch_comment.php*/
 function displayComment() {
@@ -21,7 +23,7 @@ function displayComment() {
             displayComment.innerHTML = "";
             data.forEach((comment) => {
                 displayComment.innerHTML += `
-                <div class="flex flex-col items-start w-[80%] rounded bg-slate-100 py-2 px-3 my-2">
+                <div class="flex flex-col items-start w-[80%] rounded-[1.2em] py-2 px-3 my-2 text-white" id="displayCommentList">
                     <div class="flex flex-col items-start justify-start ">
                         <div class="flex items-center space-x-2">
                             <h6 class="py-2">
@@ -31,7 +33,7 @@ function displayComment() {
                                 <span class="text-sm">le ${comment.date}</span>
                             </h6>
                         </div>
-                        <div class="flex flex-col rounded bg-white p-2">
+                        <div class="flex flex-col rounded p-2">
                             <p>
                                 <span>${comment.commentaire}</span>
                             </p>

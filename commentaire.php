@@ -58,16 +58,18 @@ if (isset($_POST['commentaire'])) {
                                               class="rounded-[1rem] p-2 text-white" placeholder="Dites bonjour :)">
                                     </textarea>
                                 </div>
-                                <button type="submit" id="submit"
-                                        class="py-2 px-5 rounded-full text-white bg-black hover:bg-slate-800 my-2 ease-out duration-100">
-                                    Ajouter un commentaire
-                                </button>
+                                <div class="flex items-center space-x-3">
+                                    <button type="submit" id="submit"
+                                            class="py-2 px-5 rounded-full text-white bg-black hover:bg-slate-800 my-2 ease-out duration-100">
+                                        Ajouter un commentaire
+                                    </button>
+                                    <div>
+                                        <p class="py-2">
+                                            <span id="msgCom"></span>
+                                        </p>
+                                    </div>
+                                </div>
                             </form>
-                        </div>
-                        <div>
-                            <p class="py-2">
-                                <span id="msgCom"></span>
-                            </p>
                         </div>
                     <?php } else { ?>
                         <button type="submit">Connectez-vous pour commenter</button>
