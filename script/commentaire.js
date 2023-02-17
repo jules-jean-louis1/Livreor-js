@@ -3,7 +3,7 @@ const commentMessage = document.querySelector('#commentaire');
 const displaymsg = document.querySelector('#msgCom');
 
 /*Creation d'une fonction qui verifie si le champ commentaire est vide*/
-function EmptyComment(commentMessage) {
+function EmptyComment() {
     if (commentMessage.value.length === 0) {
         let displaymsg = document.querySelector('#msgCom');
         displaymsg.innerHTML = "Votre message est vide.";

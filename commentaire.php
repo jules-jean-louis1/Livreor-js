@@ -35,7 +35,7 @@ if (isset($_POST['commentaire'])) {
     <main class="lg:pt-[3%]">
         <article class="flex flex-col items-center">
             <div id="DisplayTitleComment" class="flex flex-col items-center pb-4">
-                <?php if (isset($_SESSION)) { ?>
+                <?php if (isset($_SESSION['login']) != null) { ?>
                     <h1 class="text-white text-semibold text-lg">
                         <span class="text-2xl">Bonjour <?= $_SESSION['login'] ?></span>
                     </h1>
