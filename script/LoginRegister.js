@@ -1,10 +1,7 @@
 const displayForm = document.querySelector('#displayForm');
 const btnRegisterForm = document.querySelector('#buttonRegister');
 const error = document.querySelector('#error');
-const password = document.querySelector('#passwordR');
-const c_password = document.querySelector('#c_passwordR');
 const registerForm = document.querySelector('#register-form');
-
 
 btnRegisterForm.addEventListener('click', async (e) => {
     await fetch('register.php')
@@ -26,20 +23,30 @@ btnRegisterForm.addEventListener('click', async (e) => {
         })
         .then((data) => {
             const errorMessages = document.querySelector('#errorMsg');
-
-            if (emptyLogin() && emptyPassword() === false) {
+            let password = document.querySelector('#passwordR');
+            if (data.success === 'empty') {
                 console.log("Veuillez remplir les champs");
                 errorMessages.innerHTML = "Veuillez remplir les champs";
                 errorMessages.classList.add("alert-danger");
                 errorMessages.classList.remove("alert-success");
-            }
-            if (data.success === "loginUsed") {
+            } else if (data.success === "loginUsed") {
                 console.log("Login déjà utilisé");
-            } else {
-                console.log("Login disponible");
+                errorMessages.innerHTML = "Login déjà utilisé";
+                errorMessages.classList.add("alert-danger");
+                errorMessages.classList.remove("alert-success");
+            } else if (validPassword(password) === false) {
+                console.log("Le mot de passe doit contenir au moins 5 caractères, une majuscule, une minuscule et un chiffre.");
+            } else if (data.success === "passwordMatch") {
+                console.log("Les mots de passe ne correspondent pas");
+                errorMessages.innerHTML = "Les mots de passe ne correspondent pas";
+                errorMessages.classList.add("alert-danger");
+                errorMessages.classList.remove("alert-success");
             }
             if (data.success === true) {
                 console.log("Utilisateur créé");
+                errorMessages.innerHTML = "Utilisateur créé";
+                errorMessages.classList.add("alert-success");
+                errorMessages.classList.remove("alert-danger");
             }
         })
     });
@@ -54,12 +61,19 @@ function emptyLogin() {
         return true;
     }
 }
-function emptyPassword() {
-    let password = document.querySelector("#passwordR").value;
-    let password2 = document.querySelector("#c_passwordR").value;
-    if (password && password2 === "") {
+
+const validPassword = (passwordR) => {
+    let small = document.querySelector('#passwordError');
+    let reg = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{5,}$/;
+    if (reg.test(passwordR.value) === false) {
+        small.innerHTML = "Le mot de passe doit contenir au moins 5 caractères et un chiffre.";
+        small.classList.add("is-invalid");
+        small.classList.remove("is-valid");
         return false;
     } else {
+        small.innerHTML = "";
+        small.classList.remove("is-invalid");
+        small.classList.add("is-valid");
         return true;
     }
 }

@@ -22,7 +22,7 @@ session_start();
         <section id="curveBgProfil" class="lg:h-[93vh] lg:mx-2">
             <div id="containerIndex" class="flex justify-around lg:pt-[15%]">
                 <div id="titleIndex" class="text-white">
-                    <h2>
+                    <h2 class="lg:text-[4em]">
                         <span>Livre d'or</span>
                     </h2>
                     <p>
@@ -34,7 +34,7 @@ session_start();
                         <button id="buttonLogin" class="text-lg text-white rounded-full bg-[#010314]  px-4 py-2">Connexion</button>
                         <button id="buttonRegister" class="text-lg text-[#010314] rounded-full bg-white px-4 py-2">Inscription</button>
                     </div>
-                    <div id="displayForm"></div>
+                    <div id="displayForm" class="mt-4"></div>
                 </div>
             </div>
         </section>

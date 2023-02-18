@@ -85,9 +85,10 @@ header {
     background: radial-gradient(140% 107.13% at 50% 90%,transparent 37.41%,#63e 69.27%,#fff 100%);
     border-radius: 2.4rem;
 }
-#displayCommentList {
+#displayCommentList, #register-form {
     background: linear-gradient(135deg, #010314,transparent);
 }
+
 textarea {
     border: 1px solid hsla(0, 0%, 0%, 0.15);
     background: hsla(0,0%,100%,.15);
@@ -103,3 +104,11 @@ textarea {
 
 #######################################
 #####################################*/
+#register-form {
+    box-shadow: 0 0 0 2px rgba(0,0,0,.05),0 0 0 1px hsla(0,0%,100%,.1),inset 0 .5px 0 hsla(0,0%,100%,.5);
+}
+#iconContainerIndex {
+    box-shadow: 0 0 0 2px rgba(0,0,0,.05),0 0 0 1px hsla(0,0%,100%,.1),inset 0 .5px 0 hsla(0,0%,100%,.5);
+    background: linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0));
+    color : #fff;
+}
