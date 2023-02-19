@@ -1,5 +1,6 @@
 const displayForm = document.querySelector('#displayForm');
 const btnRegisterForm = document.querySelector('#buttonRegister');
+const btnLoginForm = document.querySelector('#buttonLogin');
 const error = document.querySelector('#error');
 const registerForm = document.querySelector('#register-form');
 
@@ -77,3 +78,42 @@ const validPassword = (passwordR) => {
         return true;
     }
 }
+btnLoginForm.addEventListener('click', async (e) => {
+    await fetch('login.php')
+    .then((response) => {
+        return response.text();
+    })
+    .then((data) => {
+        displayForm.innerHTML = data;
+    })
+    const loginForm = document.querySelector('#LoginForm');
+    loginForm.addEventListener("submit", (ev) =>{
+       ev.preventDefault();
+         fetch('fetch_login.php', {
+            method: 'POST',
+            body: new FormData(loginForm)
+         })
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                const errorMessages = document.querySelector('#errorMsg');
+                if (data.success === 'empty') {
+                    console.log("Veuillez remplir les champs");
+                    errorMessages.innerHTML = "Veuillez remplir les champs";
+                    errorMessages.classList.add("alert-danger");
+                    errorMessages.classList.remove("alert-success");
+                } else if (data.success === "NotMatch") {
+                    console.log("Login ou mot de passe incorrect");
+                    errorMessages.innerHTML = "Login ou mot de passe incorrect";
+                    errorMessages.classList.add("alert-danger");
+                    errorMessages.classList.remove("alert-success");
+                } else if (data.success === true) {
+                    console.log("Vous êtes connecté");
+                    errorMessages.innerHTML = "Vous êtes connecté";
+                    errorMessages.classList.add("alert-success");
+                    errorMessages.classList.remove("alert-danger");
+                }
+            })
+    });
+});

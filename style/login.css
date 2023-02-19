@@ -104,7 +104,7 @@ textarea {
 
 #######################################
 #####################################*/
-#register-form {
+#register-form, #LoginForm {
     box-shadow: 0 0 0 2px rgba(0,0,0,.05),0 0 0 1px hsla(0,0%,100%,.1),inset 0 .5px 0 hsla(0,0%,100%,.5);
 }
 #iconContainerIndex {
