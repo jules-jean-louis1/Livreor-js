@@ -10,7 +10,7 @@
         <div class="flex flex-col">
             <label for="loginC" class="text-white pb-[2%]">Login :</label>
             <input type="text" name="loginC" id="loginC" class="input rounded bg-slate-300 p-2"
-                   placeholder="Nom d'utilisateur">
+                   placeholder="Login">
         </div>
     </div>
     <div class="flex">

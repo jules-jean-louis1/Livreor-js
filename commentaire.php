@@ -33,7 +33,7 @@ if (isset($_POST['commentaire'])) {
 <?php require_once 'import/header.php'?>
 <!-- H E A D E R -->
     <main class="lg:pt-[3%]">
-        <article class="flex flex-col items-center">
+        <article class="flex flex-col items-center lg:h-[89vh]">
             <div id="DisplayTitleComment" class="flex flex-col items-center pb-4">
                 <?php if (isset($_SESSION['login']) != null) { ?>
                     <h1 class="text-white text-semibold text-lg">
@@ -47,7 +47,7 @@ if (isset($_POST['commentaire'])) {
                     <p class="font-light text-slate-400">Connecter vous pouvez laissez un commentaire ou lire celui des autres utilisateurs</p>
                     <?php } ?>
             </div>
-            <div id="containerBgComment" class="flex flex-col items-center pt-4 lg:w-[95%]">
+            <div id="containerBgComment" class="flex flex-col items-center pt-4 lg:w-[95%] lg:h-[90%]">
                 <div class="flex flex-col justify-center w-[80%] lg:pt-5">
                     <?php if (isset($_SESSION['login'])) { ?>
                         <div class="flex flex-col">
@@ -75,7 +75,7 @@ if (isset($_POST['commentaire'])) {
                         <button type="submit">Connectez-vous pour commenter</button>
                     <?php } ?>
                 </div>
-                <div class="flex flex-col items-center" id="displayComment">
+                <div class="flex flex-col items-center w-[80%] overflow-scroll lg:h-[85%] px-2" id="displayComment">
                 </div>
             </div>
         </article>

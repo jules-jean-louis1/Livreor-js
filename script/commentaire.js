@@ -2,21 +2,7 @@ const commentForm = document.querySelector('#commentForm');
 const commentMessage = document.querySelector('#commentaire');
 const displaymsg = document.querySelector('#msgCom');
 
-/*Creation d'une fonction qui verifie si le champ commentaire est vide*/
-function EmptyComment() {
-    if (commentMessage.value.length === 0) {
-        let displaymsg = document.querySelector('#msgCom');
-        displaymsg.innerHTML = "Votre message est vide.";
-        displaymsg.classList.add("alert-danger");
-        console.log("Votre message est vide.");
-        return false;
-    } else {
-        return true
-        }
-}
-EmptyComment();
-/*Creation d'une fonction qui affiches les commentaires
-depuis la base de données via la page fetch_comment.php*/
+
 function displayComment() {
     fetch("fetch_comment.php")
         .then((response) => response.json())
@@ -25,7 +11,7 @@ function displayComment() {
             displayComment.innerHTML = "";
             data.forEach((comment) => {
                 displayComment.innerHTML += `
-                <div class="flex flex-col items-start w-[80%] rounded-[1.2em] py-2 px-3 my-2 text-white" id="displayCommentList">
+                <div class="flex flex-col items-start w-[100%] rounded-[1.2em] py-2 px-3 my-2 text-white" id="displayCommentList">
                     <div class="flex flex-col items-start justify-start ">
                         <div class="flex items-center space-x-2">
                             <h6 class="py-2">
@@ -35,7 +21,7 @@ function displayComment() {
                                 <span class="text-sm">le ${comment.date}</span>
                             </h6>
                         </div>
-                        <div class="flex flex-col rounded p-2">
+                        <div class="flex flex-col rounded p-2 bg-[#FFFFFF26]">
                             <p>
                                 <span>${comment.commentaire}</span>
                             </p>
@@ -51,6 +37,21 @@ function displayComment() {
 displayComment();
 /*Mettre a jour les commentaires lorsque l'on click sur le boutton
 pour soummettre le formulaire*/
+/*Creation d'une fonction qui verifie si le champ commentaire est vide*/
+function EmptyComment() {
+    if (commentMessage.value.length === 0) {
+        let displaymsg = document.querySelector('#msgCom');
+        displaymsg.innerHTML = "Votre message est vide.";
+        displaymsg.classList.add("alert-danger");
+        console.log("Votre message est vide.");
+        return false;
+    } else {
+        return true
+    }
+}
+EmptyComment();
+/*Creation d'une fonction qui affiches les commentaires
+depuis la base de données via la page fetch_comment.php*/
 commentForm.addEventListener('submit', (e) => {
     e.preventDefault();
     setTimeout(displayComment, 50);

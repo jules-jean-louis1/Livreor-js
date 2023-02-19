@@ -20,9 +20,9 @@ session_start();
 <main>
     <article>
         <section id="curveBgProfil" class="lg:h-[93vh] lg:mx-2">
-            <div id="containerIndex" class="flex justify-around lg:pt-[15%]">
+            <div id="containerIndex" class="flex justify-around lg:items-center lg:pt-[15%]">
                 <div id="titleIndex" class="text-white">
-                    <h2 class="lg:text-[4em]">
+                    <h2 class="lg:text-[4em] font-black uppercase">
                         <span>Livre d'or</span>
                     </h2>
                     <p>

@@ -88,6 +88,9 @@ header {
 #displayCommentList, #register-form {
     background: linear-gradient(135deg, #010314,transparent);
 }
+#displayCommentList {
+    border: 1px solid #2a2b3a;
+}
 
 textarea {
     border: 1px solid hsla(0, 0%, 0%, 0.15);
