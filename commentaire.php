@@ -55,7 +55,7 @@ if (isset($_POST['commentaire'])) {
                                 <div class="flex flex-col">
                                     <label for="commentaire" class="text-white">Ecrivez votre commentaire :</label>
                                     <textarea name="commentaire" id="commentaire" cols="20" rows="10"
-                                              class="rounded-[1rem] p-2 text-white" placeholder="Dites bonjour :)">
+                                              class="rounded-[1rem] p-2 text-black">
                                     </textarea>
                                 </div>
                                 <div class="flex items-center space-x-3">
@@ -72,7 +72,7 @@ if (isset($_POST['commentaire'])) {
                             </form>
                         </div>
                     <?php } else { ?>
-                        <button type="submit">Connectez-vous pour commenter</button>
+                        <button type="submit"><a href="index.php">Connectez-vous pour commenter</a></button>
                     <?php } ?>
                 </div>
                 <div class="flex flex-col items-center w-[80%] overflow-scroll lg:h-[85%] px-2" id="displayComment">

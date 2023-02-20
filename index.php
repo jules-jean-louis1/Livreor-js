@@ -20,7 +20,7 @@ session_start();
 <main>
     <article>
         <section id="curveBgProfil" class="lg:h-[93vh] lg:mx-2">
-            <div id="containerIndex" class="flex justify-around lg:items-center lg:pt-[15%]">
+            <div id="containerIndex" class="flex justify-around lg:items-start lg:pt-[15%]">
                 <div id="titleIndex" class="text-white">
                     <h2 class="lg:text-[4em] font-black uppercase">
                         <span>Livre d'or</span>
@@ -30,11 +30,16 @@ session_start();
                     </p>
                 </div>
                 <div id="containerLoginRegister">
-                    <div id="containerbutton">
-                        <button id="buttonLogin" class="text-lg text-white rounded-full bg-[#010314]  px-4 py-2">Connexion</button>
-                        <button id="buttonRegister" class="text-lg text-[#010314] rounded-full bg-white px-4 py-2">Inscription</button>
-                    </div>
-                    <div id="displayForm" class="mt-4"></div>
+                    <?php if (isset($_SESSION['login'])) { ?>
+
+                    <?php } else { ?>
+                        <div id="containerbutton">
+                            <button id="buttonLogin" class="text-lg text-white rounded-full bg-[#010314]  px-4 py-2">Connexion</button>
+                            <button id="buttonRegister" class="text-lg text-[#010314] rounded-full bg-white px-4 py-2">Inscription</button>
+                        </div>
+                        <div id="displayForm" class="mt-4"></div>
+                    <?php } ?>
+
                 </div>
             </div>
         </section>

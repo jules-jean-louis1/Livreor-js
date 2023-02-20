@@ -34,10 +34,10 @@
                         <a href="commentaire.php">Livre d'or</a>
                     </li>
                     <li class="border-2 border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
-                        <a href="inscription.php">Inscription</a>
+                        <a href="index.php">Inscription</a>
                     </li>
                     <li class="border-2 border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
-                        <a href="connexion.php">Connexion</a>
+                        <a href="index.php">Connexion</a>
                     </li>
                 <?php } ?>
             </ul>
