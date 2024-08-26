@@ -1,45 +1,18 @@
 <?php
-// define("DB_HOST", 'localhost');
-// define("DB_NAME", 'livreor');
-// define('DB_CHARSET', 'utf8');
-// define("DB_USER", 'root');
-// define("DB_PASSWORD", '');
-
-# Docker Config
-define("DB_HOST", 'db');
-define("DB_NAME", 'mydb');
-define('DB_CHARSET', 'utf8');
-define("DB_USER", 'user');
-define("DB_PASSWORD", 'password');
-
-//plesk
-/*define("DB_HOST", 'localhost');
-define("DB_NAME", 'jules-jean-louis_livreor');
-define('DB_CHARSET', 'utf8');
-define("DB_USER", 'jules');
-define("DB_PASSWORD", '3T9w!ql77');*/
-class Comment
+require_once 'AbstractClasses/AbstractBDD.php';
+class Comment extends AbstractBDD
 {
-    protected $db;
 
+    protected $db;
     public function __construct()
     {
-        // Connexion à la base de données PostgreSQL
-        try {
-            $this->db = new PDO(
-                "pgsql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";options='--client_encoding=" . DB_CHARSET . "'",
-                DB_USER,
-                DB_PASSWORD
-            );
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            echo 'Connexion échouée : ' . $e->getMessage();
-            exit;
-        }
+        parent::__construct();
+        $this->db = $this->getBdd();
     }
 
     public function getComments()
     {
+
         $query = $this->db->prepare("SELECT date, login, commentaire FROM utilisateurs INNER JOIN commentaires ON utilisateurs.id = commentaires.id_utilisateur ORDER BY date DESC;");
         $query->execute();
         header("Content-Type: application/json");
