@@ -1,9 +1,9 @@
 <?php
-define("DB_HOST", 'localhost');
-define("DB_NAME", 'memory');
+define("DB_HOST", 'db');
+define("DB_NAME", 'mydb');
 define('DB_CHARSET', 'utf8');
-define("DB_USER", 'root');
-define("DB_PASSWORD", '');
+define("DB_USER", 'user');
+define("DB_PASSWORD", 'password');
 
 // Plesk config; use this instead of the above
 // define("DB_HOST", 'localhost');

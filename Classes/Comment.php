@@ -1,9 +1,16 @@
 <?php
-define("DB_HOST", 'localhost');
-define("DB_NAME", 'livreor');
+// define("DB_HOST", 'localhost');
+// define("DB_NAME", 'livreor');
+// define('DB_CHARSET', 'utf8');
+// define("DB_USER", 'root');
+// define("DB_PASSWORD", '');
+
+# Docker Config
+define("DB_HOST", 'db');
+define("DB_NAME", 'mydb');
 define('DB_CHARSET', 'utf8');
-define("DB_USER", 'root');
-define("DB_PASSWORD", '');
+define("DB_USER", 'user');
+define("DB_PASSWORD", 'password');
 
 //plesk
 /*define("DB_HOST", 'localhost');
