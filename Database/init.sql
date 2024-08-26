@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS commentaires;
+CREATE TABLE IF NOT EXISTS commentaires (
+  id SERIAL PRIMARY KEY,
+  commentaire TEXT NOT NULL,
+  id_utilisateur INT NOT NULL,
+  date TIMESTAMP NOT NULL
+);
+
+DROP TABLE IF EXISTS utilisateurs;
+CREATE TABLE IF NOT EXISTS utilisateurs (
+  id SERIAL PRIMARY KEY,
+  login VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
