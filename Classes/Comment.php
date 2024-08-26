@@ -24,10 +24,10 @@ class Comment
 
     public function __construct()
     {
-        // Connexion a la base de données
+        // Connexion à la base de données PostgreSQL
         try {
             $this->db = new PDO(
-                "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET,
+                "pgsql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";options='--client_encoding=" . DB_CHARSET . "'",
                 DB_USER,
                 DB_PASSWORD
             );
@@ -37,22 +37,20 @@ class Comment
             exit;
         }
     }
+
     public function getComments()
     {
-        $this->db->exec("set names utf8");
-
-        $query = $this->db->prepare("SELECT `date`,`login`,`commentaire` FROM `utilisateurs` INNER JOIN `commentaires` WHERE utilisateurs.id = commentaires.id_utilisateur ORDER BY `date` DESC;");
+        $query = $this->db->prepare("SELECT date, login, commentaire FROM utilisateurs INNER JOIN commentaires ON utilisateurs.id = commentaires.id_utilisateur ORDER BY date DESC;");
         $query->execute();
-        header("Content-Type: JSON");
+        header("Content-Type: application/json");
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result, JSON_PRETTY_PRINT);
-
     }
+
     public function insertComment($comment, $id)
     {
-        $query = $this->db->prepare("INSERT INTO `commentaires` (`commentaire`, `id_utilisateur`, `date`) VALUES (:commentaire, :id_utilisateur, NOW())");
-        $result = $query->execute
-        ([
+        $query = $this->db->prepare("INSERT INTO commentaires (commentaire, id_utilisateur, date) VALUES (:commentaire, :id_utilisateur, NOW())");
+        $result = $query->execute([
             'commentaire' => $comment,
             'id_utilisateur' => $id,
         ]);
