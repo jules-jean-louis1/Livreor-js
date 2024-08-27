@@ -3,7 +3,7 @@ require_once 'AbstractClasses/AbstractBDD.php';
 class Comment extends AbstractBDD
 {
 
-    protected $db;
+    protected PDO $db;
     public function __construct()
     {
         parent::__construct();

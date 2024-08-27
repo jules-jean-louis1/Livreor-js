@@ -2,7 +2,7 @@
 require_once 'AbstractClasses/AbstractBDD.php';
 class Users extends AbstractBDD
 {
-    protected $db;
+    protected PDO $db;
 
     public function __construct()
     {
@@ -18,7 +18,7 @@ class Users extends AbstractBDD
         return $result['total'] > 0;
     }
 
-    public function register(string $login, string $password)
+    public function register(string $login, string $password): bool
     {
         $query = $this->db->prepare("INSERT INTO utilisateurs (login, password) VALUES (:login, :password)");
         return $query->execute([
@@ -38,25 +38,25 @@ class Users extends AbstractBDD
         return false;
     }
 
-    public function updateLogin($login, $id)
+    public function updateLogin(string $login, $id): bool
     {
         $query = $this->db->prepare("UPDATE utilisateurs SET login = :login WHERE id = :id");
         return $query->execute(['login' => $login, 'id' => $id]);
     }
 
-    public function updatePassword($password, $id)
+    public function updatePassword($password, $id): bool
     {
         $query = $this->db->prepare("UPDATE utilisateurs SET password = :password WHERE id = :id");
         return $query->execute(['password' => password_hash($password, PASSWORD_BCRYPT), 'id' => $id]);
     }
 
-    public function updateLoginPassword($login, $password, $id)
+    public function updateLoginPassword($login, $password, $id): bool
     {
         $query = $this->db->prepare("UPDATE utilisateurs SET login = :login, password = :password WHERE id = :id");
         return $query->execute(['login' => $login, 'password' => password_hash($password, PASSWORD_BCRYPT), 'id' => $id]);
     }
 
-    public function deleteUser($id)
+    public function deleteUser($id): bool
     {
         $query = $this->db->prepare("DELETE FROM utilisateurs WHERE id = :id");
         return $query->execute(['id' => $id]);
