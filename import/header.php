@@ -19,24 +19,24 @@
         <div id="menu">
             <ul class="flex lg:space-x-2 text-white">
                 <?php if (isset($_SESSION['login'])) { ?>
-                    <li class="border-2 border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
+                    <li class="border rounded-lg border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
                         <a href="commentaire.php">Poster</a>
                     </li>
-                    <li class="border-2 border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
+                    <li class="border rounded-lg border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
                         <i class="fa-solid fa-circle-user"></i>
                         <a href="profil.php"><?= $_SESSION['login']?></a>
                     </li>
-                    <li class="border-2 border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
+                    <li class="border rounded-lg border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
                         <a href="disconnect.php">Deconnexion</a>
                     </li>
                 <?php } else { ?>
-                    <li class="border-2 border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
+                    <li class="border rounded-lg border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
                         <a href="commentaire.php">Livre d'or</a>
                     </li>
-                    <li class="border-2 border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
+                    <li class="border rounded-lg border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
                         <a href="index.php">Inscription</a>
                     </li>
-                    <li class="border-2 border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
+                    <li class="border rounded-lg border-[#AF9FFF] hover:border-[#7d63ff] rounded lg:px-3 lg:py-[0.1em] text-semibold">
                         <a href="index.php">Connexion</a>
                     </li>
                 <?php } ?>
