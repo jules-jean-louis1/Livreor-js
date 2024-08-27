@@ -1,5 +1,3 @@
-<?php
-?>
 <form action="connexion.php" method="post" id="LoginForm" class="flex flex-col items-center p-4 px-6 mt-4 rounded-[1.6em] space-y-3">
     <div class="flex justify-center p-2 rounded "  id="iconContainerIndex">
         <div class="flex flex-col">
