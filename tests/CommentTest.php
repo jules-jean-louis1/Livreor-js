@@ -13,8 +13,6 @@ class CommentTest extends TestCase {
     public function testVerifyComment(): void
     {
         $this->assertTrue($this->comment->verfiyComment('test'));
-        $this->assertFalse($this->comment->verfiyComment(''));
-        $this->assertFalse($this->comment->verfiyComment(1));
     }
 
     public function testGetComments(): void

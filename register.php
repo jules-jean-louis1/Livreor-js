@@ -25,7 +25,7 @@
             <small id="error"></small>
         </div>
     </div>
-    <div id="errorMsg"></div>
+    <div id="errorMsg" class="text-white h-8"></div>
     <button type="submit" class="rounded-full bg-[#6633EEFF] py-2 px-4 text-white hover:bg-purple-700 w-full">
         Inscription
     </button>

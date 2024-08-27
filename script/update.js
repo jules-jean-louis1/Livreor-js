@@ -8,17 +8,11 @@ updateForm.addEventListener('submit', (e) => {
         body: DataFormUpdate
     })
     .then((response) => {
+        let msg = document.querySelector("#msgCount");
         if (response.status === 201) {
-            // Le compte a bien été créé
-            let msg = document.querySelector("#msgCount");
             msg.innerHTML = "Votre compte a bien été modifié";
-            msg.classList.add("alert-success");
-            msg.classList.remove("alert-danger");
         } else {
-            let msg = document.querySelector("#msgCount");
             msg.innerHTML = "Votre compte n'a pas été modifié";
-            msg.classList.add("alert-danger");
-            msg.classList.remove("alert-success");
         }
     })
 });

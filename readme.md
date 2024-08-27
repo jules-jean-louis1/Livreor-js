@@ -27,3 +27,7 @@ Si le projet est utilisé avec Docker, il faut exécuter toutes les commandes `P
 ```
 docker compose exec web ./vendor/bin/phpunit tests/TestUser.php
 ```
+
+```
+DB_HOST=localhost DB_NAME=mydb DB_USER=user DB_PASSWORD=password ./vendor/bin/phpunit tests/CommentTest.php
+```
