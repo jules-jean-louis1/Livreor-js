@@ -6,12 +6,12 @@ abstract class AbstractBDD
     public function __construct()
     {
         $host = getenv('DB_HOST') ?: 'localhost';
-        $dbname = getenv('DB_NAME') ?: 'mydb';
-        $user = getenv('DB_USER') ?: 'user';
-        $password = getenv('DB_PASSWORD') ?: 'password';
+        $dbname = getenv('DB_NAME') ?: 'livreor';
+        $user = getenv('DB_USER') ?: 'root';
+        $password = getenv('DB_PASSWORD') ?: '0000';
 
         try {
-            $this->bdd = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+            $this->bdd = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
             $this->bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo 'Connexion échouée : ' . $e->getMessage();
